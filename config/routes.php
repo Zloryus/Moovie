@@ -25,6 +25,6 @@
  *     'contact'
  * );
  */
-
 $app->get('/', App\Action\HomePageAction::class, 'home');
-$app->get('/api/ping', App\Action\PingAction::class, 'api.ping');
+$app->post('/research', App\Action\ResearchAction::class, 'research');
+$app->post('/movie', App\Action\ResearchAction::class, 'research');

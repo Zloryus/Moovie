@@ -58,6 +58,10 @@ class ComposerStaticInitd513ad5bb05e4d75b671b53c734fa709
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
         ),
+        'M' => 
+        array (
+            'Moovie\\' => 7,
+        ),
         'I' => 
         array (
             'Interop\\Http\\ServerMiddleware\\' => 30,
@@ -68,15 +72,17 @@ class ComposerStaticInitd513ad5bb05e4d75b671b53c734fa709
             'Fig\\Http\\Message\\' => 17,
             'FastRoute\\' => 10,
         ),
-        'E' => 
-        array (
-            'ExpressiveInstaller\\' => 20,
-            'ExpressiveInstallerTest\\' => 24,
-        ),
         'D' => 
         array (
             'Doctrine\\Instantiator\\' => 22,
+            'Doctrine\\Common\\Cache\\' => 22,
+            'Doctrine\\Common\\Annotations\\' => 28,
+            'Doctrine\\Common\\' => 16,
             'DeepCopy\\' => 9,
+        ),
+        'C' => 
+        array (
+            'ContainerInteropDoctrine\\' => 25,
         ),
         'A' => 
         array (
@@ -201,6 +207,10 @@ class ComposerStaticInitd513ad5bb05e4d75b671b53c734fa709
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
+        'Moovie\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Movie/src',
+        ),
         'Interop\\Http\\ServerMiddleware\\' => 
         array (
             0 => __DIR__ . '/..' . '/http-interop/http-middleware/src',
@@ -217,21 +227,29 @@ class ComposerStaticInitd513ad5bb05e4d75b671b53c734fa709
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
         ),
-        'ExpressiveInstaller\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src/ExpressiveInstaller',
-        ),
-        'ExpressiveInstallerTest\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/test/ExpressiveInstallerTest',
-        ),
         'Doctrine\\Instantiator\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
         ),
+        'Doctrine\\Common\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache',
+        ),
+        'Doctrine\\Common\\Annotations\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/annotations/lib/Doctrine/Common/Annotations',
+        ),
+        'Doctrine\\Common\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common',
+        ),
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
+        ),
+        'ContainerInteropDoctrine\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dasprid/container-interop-doctrine/src',
         ),
         'App\\' => 
         array (
@@ -256,6 +274,29 @@ class ComposerStaticInitd513ad5bb05e4d75b671b53c734fa709
             'Prophecy\\' => 
             array (
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
+            ),
+        ),
+        'D' => 
+        array (
+            'Doctrine\\ORM\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/orm/lib',
+            ),
+            'Doctrine\\DBAL\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/dbal/lib',
+            ),
+            'Doctrine\\Common\\Lexer\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/lexer/lib',
+            ),
+            'Doctrine\\Common\\Inflector\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/inflector/lib',
+            ),
+            'Doctrine\\Common\\Collections\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/collections/lib',
             ),
         ),
     );
