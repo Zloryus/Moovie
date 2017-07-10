@@ -1,0 +1,241 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <style>
+        .header{
+            text-align:right;
+            top:0;
+            right: 0;
+            position:absolute;
+        }
+
+        .header a{
+            font-weight:bold;
+        }
+
+        .headerAfter{
+            background: #f2f2f2;
+            position:absolute;
+            top:0;
+            left: 0;
+            height:80px;
+            width: 100%;
+        }
+
+        .headerAfter button{
+            margin:23px 0;
+            border: 1px solid #c2c2c2;
+            border-radius: 2px;
+            width: 10px;
+        }
+
+        .zoneAfter{
+            float:left;
+        }
+        .logo-research{
+            text-align:center;
+        }
+        .logo{
+            height: 67px;
+            width: 272px;
+            padding-top:150px;
+        }
+        .logoAfter{
+            height: 33px;
+            width: 136px;
+            margin:20px;
+        }
+        .researchAfter{
+            margin:24px 0;
+            font: 16px arial,sans-serif;
+            line-height: 34px;
+            height: 34px !important;
+            padding-left: 16px;
+            width: 500px;
+        }
+        .research{
+            font: 16px arial,sans-serif;
+            line-height: 34px;
+            height: 34px !important;
+            padding-left: 16px;
+            width: 40%;
+        }
+        .button-research{
+            height: 36px;
+            background-color: #f2f2f2;
+            border: 1px solid #f2f2f2;
+            border-radius: 2px;
+            color: #757575;
+            cursor: default;
+            font-family: arial,sans-serif;
+            font-size: 13px;
+            font-weight: bold;
+            margin: 11px 4px;
+            min-width: 54px;
+            padding: 0 16px;
+            text-align: center;
+        }
+        .footer{
+            background: #f2f2f2;
+            position:fixed;
+            bottom:0;
+            left: 0;
+            width: 100%;
+            text-align:center;
+            color: #666;
+        }
+
+        .result{
+            margin-top:80px;
+            padding:10px;
+        }
+
+        .lineSearch{
+            width: 100%;
+            height:120px;
+        //border: solid 1px #c2c2c2;
+            margin:20px 0px;
+        }
+
+        .pictureSearch{
+            margin-top:5px;
+            float:left;
+            height:110px;
+            width: 15%;
+            text-align:center;
+        }
+        .descriptionSearch{
+            float:left;
+            height:110px;
+            width: 84%;
+        }
+
+        .descriptionSearch h1, h2, h3, h4{
+            margin: 0;
+        }
+
+        .descriptionSearch h2{
+            text-transform: uppercase;
+        }
+
+        .mark0{	color: #FF5353;}
+        .mark1{	color: #FFC848; }
+        .mark2{	color: #E6CE00; }
+        .mark3{	color: #48FB0D; }
+        .mark4{	color: #59DF00; }
+        .mark5{	color: #1FCB4A; }
+
+
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <a href="{{ path('list') }}"> Sign in </a> or <a href="#"> Sign up </a>
+</div>
+
+<div id="before" style="display:block">
+    <div class="logo-research">
+        <img class="logo" src="images/Moovie.png"/><br/><br/><br/>
+        <input type="text" class="research" name="research" id="research" value="{{ research }}"/><br/><br/>
+        <button onclick="research();" class="button-research" type="submit">Moovie Search</button><button onclick="lucky();" class="button-research" type="submit">I'm feeling Lucky</button>
+    </div>
+</div>
+
+<div id="after" style="display:none">
+    <div class="headerAfter">
+        <div class="zoneAfter"><a href="http://moovie.com"><img class="logoAfter" src="images/Moovie.png"/></a></div>
+        <div class="zoneAfter"><input type="text" class="researchAfter" name="researchAfter" id="researchAfter"/></div>
+        <div class="zoneAfter"><button onclick="researchAfter();" class="button-research " type="submit">🔎</button></div>
+    </div>
+    <div id="result" class="result">
+    </div>
+</div>
+
+<div class="footer">
+    Moovie © Copyright 2017 Azertyuis
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#research').keydown(function(event) {
+            // enter has keyCode = 13,
+            if (event.keyCode == 13) {
+                research();
+            }
+        });
+        $('#researchAfter').keydown(function(event) {
+            // enter has keyCode = 13,
+            if (event.keyCode == 13) {
+                researchAfter();
+            }
+        });
+    });
+
+
+    function research(){
+        var x = $("#research").val();
+        if(x != ""){
+            $("#before").hide();
+            $("#researchAfter").val(x);
+            researchCall(x);
+            $("#after").show();
+        }
+    }
+
+    function researchAfter(){
+        var x = $("#researchAfter").val();
+        researchCall(x);
+    }
+
+    function lucky(){
+        var x = $("#research").val();
+        if(x != ""){
+            $("#before").hide();
+            $("#researchAfter").val(x);
+            $("#after").show();
+        }
+    }
+
+
+
+    function researchCall(keys){
+        $("#result").html("");
+        $.post("{{ path('research') }}",
+            {
+                keys: keys
+            },
+            function(data, status){
+                console.log(data.result);
+                if(data.success){
+                    var movies = data.result;
+                    for(var element in movies){
+                        var markClass = "mark0";
+                        if(movies[element]['review'] > 1)
+                            if(movies[element]['review'] > 2)
+                                if(movies[element]['review'] > 3)
+                                    if(movies[element]['review'] > 4)
+                                        if(movies[element]['review'] > 4.5)
+                                            markClass = "mark5";
+                                        else
+                                            markClass = "mark4";
+                                    else
+                                        markClass = "mark3";
+                                else
+                                    markClass = "mark2";
+                            else
+                                markClass = "mark1";
+                        $("#result").append('<div class="lineSearch"><div class="pictureSearch"><img height="110" src="images/'+movies[element]['id']+'/cover.jpg"/></div><div class="descriptionSearch"><span><a href="movie/'+movies[element]['id']+'" target="_blank" ><h2>'+movies[element]['name']+'</h2></a><h4 style="margin-bottom:5px;">Review : <span class="'+markClass+'">'+movies[element]['review']+'/5</span></h4></span>Cinema release : <b>'+movies[element]['dateString']+'</b><p>'+movies[element]['description_short']+'</p></div></div>');
+                    }
+                }
+                else{
+                    $("#result").append("<div style='padding: 50px;'>Your search - <b>"+data.keys+"</b> - did not match any movies/artist.<br/><br/> Suggestions:<br/><UL><LI> Make sure that all words are spelled correctly.<br/><LI>Try different keywords. <br/><LI>Try more general keywords.<br/><LI>Try fewer keywords.</UL></div>");
+                }
+            }
+        );
+    }
+
+</script>
+</body>
+</htmL>

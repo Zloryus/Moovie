@@ -27,24 +27,19 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="{{ path('home') }}">
-                        <img src="{{ asset('zf-logo.png') }}" alt="Zend Expressive" />
+                        <img height="20px" src="/images/Moovie.png" alt="Zend Expressive" />
                     </a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="https://docs.zendframework.com/zend-expressive/" target="_blank">
-                                <i class="fa fa-book"></i> Docs
+                            <a href="{{ path('list') }}">
+                                <i class="fa fa-book"></i> List of Movies
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/zendframework/zend-expressive" target="_blank">
-                                <i class="fa fa-wrench"></i> Contribute
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ path('api.ping') }}">
-                                Ping Test
+                            <a href="{{ path('list') }}">
+                                <i class="fa fa-wrench"></i> Add New Movie
                             </a>
                         </li>
                     </ul>
@@ -64,7 +59,7 @@
             <hr />
             {% block footer %}
                 <p>
-                    &copy; 2005 - {{ "now"|date("Y") }} by Zend Technologies Ltd. All rights reserved.
+                    &copy; {{ "now"|date("Y") }} by Azertyuis Technologies Ltd. All rights reserved.
                 </p>
             {% endblock %}
         </div>

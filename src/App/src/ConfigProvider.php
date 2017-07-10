@@ -17,8 +17,7 @@ class ConfigProvider
      *
      * @return array
      */
-    public function __invoke()
-    {
+    public function __invoke(){
         return [
             'dependencies' => $this->getDependencies(),
             'templates'    => $this->getTemplates(),
@@ -30,15 +29,16 @@ class ConfigProvider
      *
      * @return array
      */
-    public function getDependencies()
-    {
+    public function getDependencies(){
         return [
             'invokables' => [
-                Action\PingAction::class => Action\PingAction::class,
             ],
             'factories'  => [
                 Action\HomePageAction::class => Action\HomePageFactory::class,
                 Action\ResearchAction::class => Action\ResearchFactory::class,
+                Action\Admin\ListMovieAction::class => Action\Admin\ListMovieFactory::class,
+                Action\MovieAction::class => Action\MovieFactory::class,
+                Action\Admin\DeleteMovieAction::class => Action\Admin\DeleteMovieFactory::class,
             ],
         ];
     }

@@ -27,4 +27,9 @@
  */
 $app->get('/', App\Action\HomePageAction::class, 'home');
 $app->post('/research', App\Action\ResearchAction::class, 'research');
-$app->post('/movie', App\Action\ResearchAction::class, 'research');
+$app->get('/movie/:id', App\Action\MovieAction::class, 'movie');
+
+$app->get('/Admin/movie/', App\Action\Admin\ListMovieAction::class, 'list');
+//$app->get('/Admin/movie/edit', App\Action\Admin\EditMovieAction::class, 'edit');
+//$app->post('/Admin/movie/add', App\Action\Admin\AddMovieAction::class, 'add');
+$app->post('/Admin/movie/delete', App\Action\Admin\DeleteMovieAction::class, 'delete');
